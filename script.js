@@ -21,6 +21,10 @@ fetch("https://dummyjson.com/products")
         `;
 
         grid.appendChild(card);
+        card.addEventListener("click",()=>{
+            console.log("clicked on product :",product.id);
+            window.location.href=`productDetails.html?id=${product.id}`;
+        })
     });
 })
 .catch(err => console.log(err));
