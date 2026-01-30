@@ -26,7 +26,21 @@ searchBtn.addEventListener("click", () => {
     const query = searchInput.value.trim();
     if(!query) return;
     // console.log("Searching for:", query);
+
+
+    //history suggestion
+    let history=JSON.parse(localStorage.getItem("searchhistory")) || [];
+    if(!history.includes(query)){
+        history.push({
+            query:query,
+            time:Date.now()
+        });
+        localStorage.setItem("searchHistory", JSON.stringify(history));
+    }
     
     window.location.href =`search.html?q=${encodeURIComponent(query)}`; 
     searchInput.value = "";
+    
+    
 });
+
