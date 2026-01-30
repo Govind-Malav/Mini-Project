@@ -91,3 +91,7 @@ searchInput.addEventListener("input", () => {
         suggestionBox.appendChild(div);
     });
     });
+    const historyBtn = document.getElementById("historyList");
+historyBtn.addEventListener("click", () => {
+    window.location.href = "searchhistory.html";
+});
