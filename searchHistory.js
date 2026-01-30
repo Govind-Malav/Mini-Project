@@ -19,5 +19,8 @@ history.forEach(item => {
     //     window.location.href = `search.html?q=${encodeURIComponent(item.query)}`;
     // });
     console.log("container",container);
+    div.addEventListener("click",()=>{
+        window.location.href=`search.html?q=${encodedURIComponent(item.query)}`
+    });
     container.appendChild(div);
 });
