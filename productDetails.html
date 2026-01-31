@@ -4,18 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="productsDetails.js" ></script>
-    <link rel="stylesheet" href="prdouctDetails.css">
+        <link rel="stylesheet" href="prdouctDetails.css">
+        <script src="productsDetails.js" defer></script>
 
 </head>
 <body>
-   <h1 class="h">PRODUCT DETAILS</h1>
-   <div id="title"></div>
-   <img  id="thumbnail" alt="Product image">
-   <div id="price"></div>
-   <div id="description"></div>
-   <div id="availability"></div>
-   <div id="details"></div>
-    
+     <main class="product-page">
+         <h1 class="h">PRODUCT DETAILS</h1>
+
+         <section class="product-card">
+             <div class="media">
+                 <img id="thumbnail" alt="Product image">
+             </div>
+
+             <div class="info">
+                 <h2 id="title"></h2>
+                 <div id="price" class="price"></div>
+                 <div id="description" class="description"></div>
+                 <div id="availability" class="availability"></div>
+
+                 <h3>Product Details</h3>
+                 <ul id="details" class="details-list"></ul>
+
+                 <div id="tags" class="tags"></div>
+
+                 <div class="actions">
+                     <button id="buyBtn" class="btn primary">Buy Now</button>
+                     <button id="backBtn" class="btn ghost">Back</button>
+                 </div>
+             </div>
+         </section>
+     </main>
+
 </body>
 </html>

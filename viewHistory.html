@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>View History - Product Store</title>
+    <link rel="stylesheet" href="page.css" />
+    <style>
+      .history-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+      
+      .history-header h1 {
+        margin: 0;
+        flex: 1;
+      }
+      
+      .clear-history-btn {
+        padding: 10px 20px;
+        background: #ff6b6b;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+      
+      .clear-history-btn:hover {
+        background: #ff5252;
+        transform: translateY(-2px);
+      }
+      
+      .back-btn {
+        padding: 10px 20px;
+        background: #2b7a78;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+      
+      .back-btn:hover {
+        background: #1f5854;
+        transform: translateY(-2px);
+      }
+      
+      .empty-message {
+        text-align: center;
+        padding: 40px;
+        color: #999;
+        font-size: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="history-header">
+      <h1>📋 Viewed Products</h1>
+      <button class="back-btn" onclick="window.location.href='index.html'">← Back to Store</button>
+      <button class="clear-history-btn" id="clearHistoryBtn">🗑️ Clear History</button>
+    </div>
+
+    <div class="grid" id="historyGrid"></div>
+    <script src="viewHistory.js"></script>
+  </body>
+</html>
