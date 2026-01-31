@@ -1,33 +1,43 @@
-// fetch("https://dummyjson.com/products")
-// .then(response => response.json())
-// .then(data => {
-//     console.log("sucess ",data.products);
-// })
-// .catch(error => {console.error('Error:', error)});
+// If the page includes `productList`, pagination.js handles fetching and rendering.
+// Skip the global fetch to avoid rendering all products on a single page.
+if (!document.getElementById("productList")) {
+    fetch("https://dummyjson.com/products")
+    .then(response => response.json())
+    .then(data => {
+        let grid = document.getElementById("productGrid");
 
-fetch("https://dummyjson.com/products")
-.then(response => response.json())
-.then(data => {
-    let grid = document.getElementById("productGrid");
+        data.products.forEach(product => {
+            let card = document.createElement("div");
+            card.className = "card";
 
-    data.products.forEach(product => {
-        let card = document.createElement("div");
-        card.className = "card";
+            card.innerHTML = `
+                <img src="${product.thumbnail}">
+                <h4>${product.title}</h4>
+                <p>₹ ${product.price}</p>
+            `;
 
-        card.innerHTML = `
-            <img src="${product.thumbnail}">
-            <h4>${product.title}</h4>
-            <p>₹ ${product.price}</p>
-        `;
-
-        grid.appendChild(card);
-        card.addEventListener("click",()=>{
-            console.log("clicked on product :",product.id);
-            window.location.href=`productDetails.html?id=${product.id}`;
-        })
-    });
-})
-.catch(err => console.log(err));
+            grid.appendChild(card);
+            card.addEventListener("click",()=>{
+                console.log("clicked on product :",product.id);
+                // Store viewed product in localStorage
+                let viewedProducts = JSON.parse(localStorage.getItem("viewedProducts")) || [];
+                const productExists = viewedProducts.some(p => p.id === product.id);
+                if(!productExists) {
+                    viewedProducts.unshift({
+                        id: product.id,
+                        title: product.title,
+                        price: product.price,
+                        thumbnail: product.thumbnail,
+                        viewedAt: Date.now()
+                    });
+                    localStorage.setItem("viewedProducts", JSON.stringify(viewedProducts));
+                }
+                window.location.href=`productDetails.html?id=${product.id}`;
+            })
+        });
+    })
+    .catch(err => console.log(err));
+}
 
 
 const searchBtn = document.getElementById("searchbtn");
@@ -99,3 +109,11 @@ searchInput.addEventListener("input", () => {
 historyBtn.addEventListener("click", () => {
     window.location.href = "searchhistory.html";
 });
+
+// View History button
+const viewHistoryBtn = document.getElementById("viewHistory");
+if(viewHistoryBtn) {
+    viewHistoryBtn.addEventListener("click", () => {
+        window.location.href = "viewHistory.html";
+    });
+}

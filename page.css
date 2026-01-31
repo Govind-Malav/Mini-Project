@@ -1,7 +1,7 @@
 .grid{
     display:grid;
     grid-template-columns: repeat(4, 1fr);
-    gap:15px;
+    gap: 8px;
     margin: 25px;
 }
 .card{
@@ -9,10 +9,11 @@
     padding: 20px;
     /* text-align: center; */
     border-radius: 10px;
-    width: 280px;
+    width: 320px;
     font-size: large;
     box-shadow: 0px 5px 10px rgb(0, 0, 0);
-    margin: 12px;
+    margin: 6px;
+    transition: transform 0.3s ease;
 }
 .card:hover{
     transform: scale(1.05);
@@ -22,9 +23,39 @@
 text-align: center;
 }
 img{
-    height:250px;
+    height: 280px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 8px;
 }
 
 h1{
     text-align: center;
 }
+
+/* Controls (search + buttons) under the heading */
+.controls{
+    display:flex;
+    gap:10px;
+    justify-content:center;
+    align-items:center;
+    margin: 12px 0 6px 0;
+}
+.controls input#searchInput{
+    padding:8px 12px;
+    border-radius:6px;
+    border:1px solid rgba(0,0,0,0.12);
+    width: 320px;
+}
+.controls button{
+    padding:8px 12px;
+    border-radius:6px;
+    border:1px solid rgba(0,0,0,0.12);
+    background:#fff;
+    cursor:pointer;
+    transition: all 0.3s ease;
+}
+.controls button#searchbtn{ background:#2b7a78; color:#fff; border-color:transparent }
+.controls button#historyList{ background:transparent }
+.controls button#viewHistory{ background:linear-gradient(135deg, #667eea 0%, #764ba2 100%); color:#fff; border-color:transparent; font-weight:600 }
+.controls button#viewHistory:hover{ transform:translateY(-2px); box-shadow: 0 6px 15px rgba(102, 126, 234, 0.3) }
